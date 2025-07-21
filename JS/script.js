@@ -5,7 +5,7 @@ let currFolder
 
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`/${folder}/`)
+    let a = await fetch(`${folder}/`)
     let response = await a.text()
     console.log(response)
     let div = document.createElement("div")
@@ -16,7 +16,7 @@ async function getSongs(folder) {
         const element = as[index];
 
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`/${folder}/`)[1])
+            songs.push(element.href.split(`${folder}/`)[1])
         }
 
     }
@@ -69,7 +69,7 @@ function formatTime(seconds) {
 
 const playMusic = (track) => {
     // let audio = new Audio("/songs/" + track)
-    currentSong.src = `/${currFolder}/` + track
+    currentSong.src = `${currFolder}/${track}`
     currentSong.play()
     play.src = "Images/pause.svg"
     document.querySelector(".songinfo").innerHTML = track
